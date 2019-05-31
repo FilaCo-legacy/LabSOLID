@@ -1,7 +1,4 @@
-﻿using System;
-using System.Xml.Serialization;
-
-namespace ParsingStructs
+﻿namespace LabSOLID.ParsingStructs
 {
     /// <summary>
     /// Defines possible types of the <see cref="Id"/>s
@@ -47,8 +44,8 @@ namespace ParsingStructs
         
         public static bool operator <(Id ident1, Id ident2) => ident1.GetHashCode() < ident2.GetHashCode();
         public static bool operator >(Id ident1, Id ident2) => ident1.GetHashCode() > ident2.GetHashCode();
-        public static bool operator ==(Id ident1, Id ident2) => ident1.GetHashCode() == ident2.GetHashCode();
-        public static bool operator !=(Id ident1, Id ident2) => ident1.GetHashCode() != ident2.GetHashCode();
+        public static bool operator ==(Id ident1, Id ident2) => ident1?.GetHashCode() == ident2?.GetHashCode();
+        public static bool operator !=(Id ident1, Id ident2) => ident1?.GetHashCode() != ident2?.GetHashCode();
         
     }
 }
