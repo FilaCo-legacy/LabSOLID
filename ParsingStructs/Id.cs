@@ -3,31 +3,36 @@
     /// <summary>
     /// Defines possible types of the <see cref="Id"/>s
     /// </summary>
-    public enum TypeIdent { Classes, Consts, Vars, Methods };
+    public enum Identifier { Classes, Consts, Vars, Methods };
     
     /// <summary>
     /// Defines possible types of some <see cref="Id"/>'s value
     /// </summary>
-    public enum TypeValue { int_type, float_type, bool_type, char_type, string_type, class_type };
+    public enum Value { int_type, float_type, bool_type, char_type, string_type, class_type };
     
     /// <summary>
     /// Represents some type of the variable from the file
     /// </summary>
     public abstract class Id
     {
-        public TypeIdent TypeId { get; set; }
+        public abstract Identifier TypeId { get; }
  
-        public TypeValue TypeVal { get; set; }
+        public abstract Value TypeValue { get; }
         
-        public string Name { get; set; }
+        public string Name { get;}
+
+        public Id(string name)
+        {
+            Name = name;
+        }
 
         public override string ToString()
         {
-            return string.Format($"{Name} | {GetHashCode()} | {TypeId} | {TypeVal}");
+            return string.Format($"{Name} | {GetHashCode()} | {TypeId} | {TypeValue}");
         }
         
         /// <summary>
-        /// Compute the hash-function (Poly-hash) from a name of this <see cref="Id"/>
+        /// Compute the hash-function (Poly-hash) from a name of this <see cref="ParsingStructs.Id"/>
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
