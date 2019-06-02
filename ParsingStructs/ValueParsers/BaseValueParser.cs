@@ -1,6 +1,6 @@
 using System;
 
-namespace LabSOLID.ParsingStructs.TypeParsers
+namespace LabSOLID.ParsingStructs.ValueParsers
 {
     public abstract class BaseValueParser : IValueParser
     {

@@ -1,4 +1,4 @@
-namespace LabSOLID.ParsingStructs.TypeParsers
+namespace LabSOLID.ParsingStructs.ValueParsers
 {
     public interface IValueParser
     {
