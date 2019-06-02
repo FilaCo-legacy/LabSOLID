@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace LabSOLID.ParsingStructs.IdParsers
 {
-    public abstract class BaseIdParser:IdParser
+    public abstract class BaseIdParser: MonoList<IdParser>,IdParser 
     {
         protected abstract string Pattern { get; }
 
@@ -12,12 +12,10 @@ namespace LabSOLID.ParsingStructs.IdParsers
 
             return regex.IsMatch(source);
         }
-        
-        public IdParser Next { get; set; }
-        
+
         public virtual Id Parse(string source)
         {
-            return Next?.Parse(source);
+            return _next?.Data.Parse(source);
         }
     }
 }

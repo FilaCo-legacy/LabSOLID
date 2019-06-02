@@ -7,7 +7,7 @@ namespace LabSOLID.ParsingStructs.IdParsers
         public override Id Parse(string source)
         {
             if (!CanHandle(source))
-                return base.Parse(source);
+                return null;
             
             source = source.TrimEnd(' ', ';');
             var inp = source.Split(' ');

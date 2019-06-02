@@ -8,14 +8,16 @@ namespace LabSOLID
     /// </summary>
     public class MonoList <T> : IEnumerable<T>
     {
-        private MonoList<T> _next;
+        protected MonoList<T> _next;
 
-        private readonly T _data;
+        public T Data { get; }
 
         public MonoList (T data)
         {
-            _data = data;
+            Data = data;
         }
+        
+        public MonoList () {}
         
         public void AddEnd(T data)
         {
@@ -33,7 +35,7 @@ namespace LabSOLID
 
             while (!(cur is null))
             {
-                yield return cur._data;
+                yield return cur.Data;
                 
                 cur = cur._next;
             }
