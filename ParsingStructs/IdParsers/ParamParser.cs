@@ -26,22 +26,21 @@ namespace LabSOLID.ParsingStructs.IdParsers
             if (!CanHandle(source))
                 return null;
             
-            source = source.Trim(' ');
             var inp = source.Split(' ');
-            var transerType = TransferType.param_val;
+            var transferType = TransferType.param_val;
             switch (inp[0])
             {
                 case "ref":
-                    transerType = TransferType.param_ref;
+                    transferType = TransferType.param_ref;
                     break;
                 case "out":
-                    transerType = TransferType.param_out;
+                    transferType = TransferType.param_out;
                     break;
                 default:
-                    return new Param(ValueParser.Parse(inp[0]), transerType);
+                    return new Param(ValueParser.Parse(inp[0]), transferType);
             }
                 
-            return new Param(ValueParser.Parse(inp[1]), transerType);
+            return new Param(ValueParser.Parse(inp[1]), transferType);
         }
     }
 }

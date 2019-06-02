@@ -29,9 +29,9 @@ namespace LabSOLID.ParsingStructs.IdParsers
             var inp = source.Split(',');
             var listParams = new MonoList<Param>();
 
-            for (var i = 0; i < inp.Length; ++i)
+            foreach (var strParam in inp)
             {
-                var elem = ParamParser.Parse(inp[i]);
+                var elem = ParamParser.Parse(strParam.Trim(' '));
                 listParams.AddEnd(elem);
             }
 

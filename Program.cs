@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using LabSOLID.BinaryTree;
-using LabSOLID.BinaryTree.TreePrinters;
+using LabSOLID.ParsingStructs;
 using LabSOLID.ParsingStructs.IdParsers;
 using LabSOLID.ParsingStructs.ValueParsers;
 
@@ -31,20 +31,22 @@ namespace LabSOLID
         private static void Main(string[] args)
         {
             InitParsers();
-            var idTree = new IdBinaryTree();
-            idTree.Printer = new ConsoleTreePrinter();
-            
+            var idTree = new BinaryTree<Id>();
+
             using (var streamReader = new StreamReader("input.txt"))
             {
                 while (!streamReader.EndOfStream)
                 {
                     var inputLine = streamReader.ReadLine();
                     
-                    idTree.Add(TypeParser.Parse(inputLine));
+                    idTree.Add(TypeParser.Parse(inputLine.Trim(' ')));
                 }
             }
-            
-            idTree.Print();
+
+            foreach (var curIdent in idTree)
+            {
+                Console.WriteLine(curIdent);
+            }
         }
     }
 }

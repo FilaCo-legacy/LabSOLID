@@ -20,7 +20,7 @@ namespace LabSOLID.ParsingStructs.IdParsers
             if (!CanHandle(source))
                 return base.Parse(source);
             
-            source = source.TrimEnd(';', ' ');
+            source = source.TrimEnd(';');
             source = source.Replace('=', ' ');
             var splittedSource = Regex.Replace(source, @"\s+", " ").Split(' ');
 

@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using LabSOLID.ParsingStructs.ValueParsers;
 
 namespace LabSOLID.ParsingStructs.IdParsers
@@ -18,10 +19,10 @@ namespace LabSOLID.ParsingStructs.IdParsers
             if (!CanHandle(source))
                 return base.Parse(source);
             
-            source = source.TrimEnd(';', ' ');
-            var inp = source.Split(' ');
+            source = source.TrimEnd(';');
+            var splittedSource = Regex.Replace(source, @"\s+", " ").Split(' ');
             
-            return  new Var( inp[1], ValueParser.Parse(inp[0]));
+            return  new Var( splittedSource[1], ValueParser.Parse(splittedSource[0]));
         }
     }
 }

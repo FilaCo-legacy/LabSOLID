@@ -1,4 +1,6 @@
-﻿namespace LabSOLID.ParsingStructs
+﻿using System;
+
+namespace LabSOLID.ParsingStructs
 {
     /// <summary>
     /// Defines possible types of the <see cref="Id"/>s
@@ -13,7 +15,7 @@
     /// <summary>
     /// Represents some type of the variable from the file
     /// </summary>
-    public abstract class Id
+    public abstract class Id : IComparable<Id>
     {
         public abstract Identifier TypeId { get; }
  
@@ -30,7 +32,12 @@
         {
             return string.Format($"{Name} | {GetHashCode()} | {TypeId} | {TypeValue}");
         }
-        
+
+        public int CompareTo(Id other)
+        {
+            return GetHashCode().CompareTo(other?.GetHashCode());
+        }
+
         /// <summary>
         /// Compute the hash-function (Poly-hash) from a name of this <see cref="ParsingStructs.Id"/>
         /// </summary>
@@ -46,11 +53,5 @@
             }
             return hash;
         }
-        
-        public static bool operator <(Id lhs, Id rhs) => lhs?.GetHashCode() < rhs?.GetHashCode();
-        public static bool operator >(Id lhs, Id rhs) => lhs?.GetHashCode() > rhs?.GetHashCode();
-        public static bool operator ==(Id lhs, Id rhs) => lhs?.GetHashCode() == rhs?.GetHashCode();
-        public static bool operator !=(Id lhs, Id rhs) => lhs?.GetHashCode() != rhs?.GetHashCode();
-        
     }
 }

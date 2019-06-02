@@ -22,10 +22,10 @@ namespace LabSOLID.ParsingStructs.IdParsers
             if (!CanHandle(source))
                 return base.Parse(source);
             
-            source = source.TrimEnd(';', ' ');
+            source = source.TrimEnd(';');
             source = Regex.Replace(source, @"\s+", " ");
             var firstOpenBracket = source.IndexOf('(');
-            var argsPart = source.Substring(firstOpenBracket + 1);
+            var argsPart = source.Substring(firstOpenBracket);
             var mainPart = source.Substring(0, firstOpenBracket).Split(' ');
             
             return new Method(mainPart[1], ValueParser.Parse(mainPart[0]), ListParamsParser.Parse(argsPart));

@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace LabSOLID.ParsingStructs.IdParsers
 {
     public class ClassParser : BaseIdParser
@@ -9,9 +11,9 @@ namespace LabSOLID.ParsingStructs.IdParsers
             if (!CanHandle(source))
                 return base.Parse(source);
             
-            source = source.TrimEnd(' ', ';');
-            var inp = source.Split(' ');
-            return new Class(inp[1]);
+            source = source.TrimEnd(';');
+            var splittedSource = Regex.Replace(source, @"\s+", " ").Split(' ');
+            return new Class(splittedSource[1]);
         }
     }
 }

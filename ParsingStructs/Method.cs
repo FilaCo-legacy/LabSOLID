@@ -19,7 +19,14 @@
 
         public override string ToString()
         {
-            return base.ToString() + _monoList;
+            var cur = "";
+
+            foreach (var param in _monoList)
+            {
+                cur += param.ToString();
+            }
+            
+            return base.ToString() + cur;
         }
     }
 }
