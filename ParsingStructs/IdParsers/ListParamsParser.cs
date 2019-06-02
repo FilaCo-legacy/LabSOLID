@@ -20,14 +20,14 @@ namespace LabSOLID.ParsingStructs.IdParsers
             ParamParser = parser;
         }
 
-        public ListParams Parse(string source)
+        public MonoList<Param> Parse(string source)
         {
             if (!CanHandle(source))
                 return null;
             
             source = source.Trim('(', ')');
             var inp = source.Split(',');
-            var listParams = new ListParams(ParamParser.Parse(inp[0]));
+            var listParams = new MonoList<Param>(ParamParser.Parse(inp[0]));
 
             for (var i = 1; i < inp.Length; ++i)
             {

@@ -5,21 +5,21 @@
     /// </summary>
     public class Method : Id
     {
-        private readonly ListParams _listParams;
+        private readonly MonoList<Param> _monoList;
 
         public override Identifier TypeId => Identifier.Methods;
         
         public override Value TypeValue { get; }
         
-        public Method(string name, Value typeValue, ListParams listParams) : base(name)
+        public Method(string name, Value typeValue, MonoList<Param> monoList) : base(name)
         {
-            _listParams = listParams;
+            _monoList = monoList;
             TypeValue = typeValue;
         }
 
         public override string ToString()
         {
-            return base.ToString() + _listParams;
+            return base.ToString() + _monoList;
         }
     }
 }

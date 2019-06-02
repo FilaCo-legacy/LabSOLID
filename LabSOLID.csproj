@@ -6,9 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Update="ParsingStructs\ListParams.cs">
-        <DependentUpon>Method.cs</DependentUpon>
-      </Compile>
       <Compile Update="ParsingStructs\Param.cs">
         <DependentUpon>Method.cs</DependentUpon>
       </Compile>
