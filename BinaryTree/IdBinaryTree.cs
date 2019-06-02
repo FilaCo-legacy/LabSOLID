@@ -25,7 +25,7 @@ namespace LabSOLID.BinaryTree
         {
             _root = new IdNode(data);
         }
-        
+
         public void Add(Id nodeData)
         {
             if (Empty)

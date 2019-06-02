@@ -47,10 +47,10 @@
             return hash;
         }
         
-        public static bool operator <(Id ident1, Id ident2) => ident1.GetHashCode() < ident2.GetHashCode();
-        public static bool operator >(Id ident1, Id ident2) => ident1.GetHashCode() > ident2.GetHashCode();
-        public static bool operator ==(Id ident1, Id ident2) => ident1?.GetHashCode() == ident2?.GetHashCode();
-        public static bool operator !=(Id ident1, Id ident2) => ident1?.GetHashCode() != ident2?.GetHashCode();
+        public static bool operator <(Id lhs, Id rhs) => lhs?.GetHashCode() < rhs?.GetHashCode();
+        public static bool operator >(Id lhs, Id rhs) => lhs?.GetHashCode() > rhs?.GetHashCode();
+        public static bool operator ==(Id lhs, Id rhs) => lhs?.GetHashCode() == rhs?.GetHashCode();
+        public static bool operator !=(Id lhs, Id rhs) => lhs?.GetHashCode() != rhs?.GetHashCode();
         
     }
 }

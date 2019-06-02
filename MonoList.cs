@@ -8,36 +8,40 @@ namespace LabSOLID
     /// </summary>
     public class MonoList <T> : IEnumerable<T>
     {
-        protected MonoList<T> _next;
+        private MonoListEntry<T> _root;
 
-        public T Data { get; }
+        public bool Empty => _root is null;
 
-        public MonoList (T data)
+        public MonoList()
         {
-            Data = data;
+            _root = null;
         }
-        
-        public MonoList () {}
         
         public void AddEnd(T data)
         {
-            var cur = this;
+            if (Empty)
+            {
+                _root = new MonoListEntry<T>(data);
+                return;
+            }
+
+            var cur = _root;
             
-            while (cur._next != null)
-                cur = cur._next;
+            while (!(cur.Next is null))
+                cur = cur.Next;
             
-            cur._next = new MonoList<T>(data);
+            cur.Next = new MonoListEntry<T>(data);
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            var cur = this;
+            var cur = _root;
 
             while (!(cur is null))
             {
                 yield return cur.Data;
                 
-                cur = cur._next;
+                cur = cur.Next;
             }
         }
 

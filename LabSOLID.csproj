@@ -9,6 +9,9 @@
       <Compile Update="ParsingStructs\Param.cs">
         <DependentUpon>Method.cs</DependentUpon>
       </Compile>
+      <Compile Update="MonoListEntry.cs">
+        <DependentUpon>MonoList.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

@@ -20,13 +20,13 @@ namespace LabSOLID.ParsingStructs.IdParsers
         public override Id Parse(string source)
         {
             if (!CanHandle(source))
-                return null;
+                return base.Parse(source);
             
             source = source.TrimEnd(';', ' ');
             source = Regex.Replace(source, @"\s+", " ");
             var firstOpenBracket = source.IndexOf('(');
             var argsPart = source.Substring(firstOpenBracket + 1);
-            var mainPart = source.Substring(0, firstOpenBracket + 1).Split(' ');
+            var mainPart = source.Substring(0, firstOpenBracket).Split(' ');
             
             return new Method(mainPart[1], ValueParser.Parse(mainPart[0]), ListParamsParser.Parse(argsPart));
         }
