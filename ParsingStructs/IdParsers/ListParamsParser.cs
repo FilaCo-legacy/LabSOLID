@@ -1,3 +1,4 @@
+using System;
 using System.Text.RegularExpressions;
 
 namespace LabSOLID.ParsingStructs.IdParsers
@@ -23,7 +24,7 @@ namespace LabSOLID.ParsingStructs.IdParsers
         public MonoList<Param> Parse(string source)
         {
             if (!CanHandle(source))
-                return null;
+                throw new Exception("Input string has wrong format");
             
             source = source.Trim('(', ')');
             var inp = source.Split(',');

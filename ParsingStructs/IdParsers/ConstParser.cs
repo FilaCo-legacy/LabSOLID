@@ -22,7 +22,7 @@ namespace LabSOLID.ParsingStructs.IdParsers
             
             source = source.TrimEnd(';');
             source = source.Replace('=', ' ');
-            var splittedSource = Regex.Replace(source, @"\s+", " ").Split(' ');
+            var splittedSource = source.Split(' ');
 
             return new Const(splittedSource[2], splittedSource[3], ValueParser.Parse(splittedSource[1]));
         }

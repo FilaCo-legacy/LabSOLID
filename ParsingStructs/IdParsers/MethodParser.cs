@@ -25,7 +25,7 @@ namespace LabSOLID.ParsingStructs.IdParsers
             source = source.TrimEnd(';');
             source = Regex.Replace(source, @"\s+", " ");
             var firstOpenBracket = source.IndexOf('(');
-            var argsPart = source.Substring(firstOpenBracket);
+            var argsPart = source.Substring(firstOpenBracket).Trim(' ');
             var mainPart = source.Substring(0, firstOpenBracket).Split(' ');
             
             return new Method(mainPart[1], ValueParser.Parse(mainPart[0]), ListParamsParser.Parse(argsPart));

@@ -1,3 +1,4 @@
+using System;
 using System.Text.RegularExpressions;
 using LabSOLID.ParsingStructs.ValueParsers;
 
@@ -24,7 +25,7 @@ namespace LabSOLID.ParsingStructs.IdParsers
         public Param Parse(string source)
         {
             if (!CanHandle(source))
-                return null;
+                throw new Exception("Input string has wrong format");
             
             var inp = source.Split(' ');
             var transferType = TransferType.param_val;

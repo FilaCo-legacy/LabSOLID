@@ -12,7 +12,8 @@ namespace LabSOLID.ParsingStructs.IdParsers
                 return base.Parse(source);
             
             source = source.TrimEnd(';');
-            var splittedSource = Regex.Replace(source, @"\s+", " ").Split(' ');
+            var splittedSource = source.Split(' ');
+            
             return new Class(splittedSource[1]);
         }
     }

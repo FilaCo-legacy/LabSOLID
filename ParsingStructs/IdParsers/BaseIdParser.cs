@@ -1,3 +1,4 @@
+using System;
 using System.Text.RegularExpressions;
 
 namespace LabSOLID.ParsingStructs.IdParsers
@@ -17,7 +18,10 @@ namespace LabSOLID.ParsingStructs.IdParsers
 
         public virtual Id Parse(string source)
         {
-            return Next?.Parse(source);
+            if (!(Next is null))
+                return Next.Parse(source);
+            
+            throw  new Exception("Undefined identifier type");
         }
     }
 }

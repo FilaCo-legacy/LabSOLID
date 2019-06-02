@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using LabSOLID.ParsingStructs.IdParsers;
 
 namespace LabSOLID.ParsingStructs.ValueParsers
@@ -16,6 +17,11 @@ namespace LabSOLID.ParsingStructs.ValueParsers
             cur.Next = parser;
         }
 
-        
+        public override Value Parse(string source)
+        {
+            source = Regex.Replace(source, @"\s+", " ");
+            
+            return base.Parse(source);
+        }
     }
 }

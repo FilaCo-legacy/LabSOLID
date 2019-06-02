@@ -32,14 +32,24 @@ namespace LabSOLID
         {
             InitParsers();
             var idTree = new BinaryTree<Id>();
+            var ind = 0;
 
             using (var streamReader = new StreamReader("input.txt"))
             {
                 while (!streamReader.EndOfStream)
                 {
                     var inputLine = streamReader.ReadLine();
-                    
-                    idTree.Add(TypeParser.Parse(inputLine.Trim(' ')));
+
+                    try
+                    {
+                        idTree.Add(TypeParser.Parse(inputLine.Trim(' ')));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Error:{e.Message}, line index {ind+1}");
+                    }
+
+                    ++ind;
                 }
             }
 
